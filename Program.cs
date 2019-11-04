@@ -16,7 +16,6 @@ namespace HWiNFODumper
         private MemoryMappedFile mmf;
         private MemoryMappedViewAccessor accessor;
         private _HWiNFO_SHARED_MEM HWiNFOMemory;
-
         private List<JsonObj> data = new List<JsonObj>();
 
         static void Main(string[] args)
@@ -32,6 +31,7 @@ namespace HWiNFODumper
                 mmf = MemoryMappedFile.OpenExisting(HWiNFO_SHARED_MEM_FILE_NAME, MemoryMappedFileRights.Read);
                 accessor = mmf.CreateViewAccessor(0L, Marshal.SizeOf(typeof(_HWiNFO_SHARED_MEM)), MemoryMappedFileAccess.Read);
                 accessor.Read(0L, out HWiNFOMemory);
+                ReadSensorNames();
             }
             catch (Exception ex)
             {
@@ -40,7 +40,6 @@ namespace HWiNFODumper
                 Console.ReadLine();
                 Environment.Exit(1);
             }
-            ReadSensorNames();
         }
 
         public void ReadSensorNames()
@@ -80,20 +79,17 @@ namespace HWiNFODumper
                     data[(int)structure.dwSensorIndex].sensors.Add(structure);
                 }
             }
-            try
-            {
-                using (FileStream fs = File.Create("mem_dump.json"))
-                {
-                    byte[] json = new UTF8Encoding(true).GetBytes(JsonConvert.SerializeObject(data, Formatting.Indented));
-                    fs.Write(json, 0, json.Length);
-                    Console.WriteLine("Success dumped");
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            saveDataToFile();
+        }
 
+        public void saveDataToFile()
+        {
+            using (FileStream fs = File.Create("mem_dump.json"))
+            {
+                byte[] json = new UTF8Encoding(true).GetBytes(JsonConvert.SerializeObject(data, Formatting.Indented));
+                fs.Write(json, 0, json.Length);
+                Console.WriteLine("Success dumped");
+            }
         }
 
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
