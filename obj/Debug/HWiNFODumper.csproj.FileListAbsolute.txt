@@ -1,0 +1,9 @@
+F:\DEVELOP\C#\HWiNFODumper\obj\Debug\HWiNFODumper.csprojAssemblyReference.cache
+F:\DEVELOP\C#\HWiNFODumper\bin\Debug\HWiNFODumper.exe.config
+F:\DEVELOP\C#\HWiNFODumper\bin\Debug\HWiNFODumper.exe
+F:\DEVELOP\C#\HWiNFODumper\bin\Debug\HWiNFODumper.pdb
+F:\DEVELOP\C#\HWiNFODumper\bin\Debug\Newtonsoft.Json.dll
+F:\DEVELOP\C#\HWiNFODumper\bin\Debug\Newtonsoft.Json.xml
+F:\DEVELOP\C#\HWiNFODumper\obj\Debug\HWiNFODumper.csproj.CopyComplete
+F:\DEVELOP\C#\HWiNFODumper\obj\Debug\HWiNFODumper.exe
+F:\DEVELOP\C#\HWiNFODumper\obj\Debug\HWiNFODumper.pdb
